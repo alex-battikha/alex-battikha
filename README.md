@@ -16,10 +16,10 @@
 - Actively Programming in 5+ languages
 
 ### Analytics
-[![Alex Battikha's GitHub Stats](https://github-readme-stats.vercel.app/api?username=alex-battikha&show_icons=true&count_private=true&hide=stars,prs&border_radius=15&theme=tokyonight)](https://github.com/anuraghazra/github-readme-stats)
+[![Alex Battikha's GitHub Stats](https://github-readme-stats.vercel.app/api?username=alex-battikha&show_icons=true&count_private=true&hide=stars,prs&border_radius=15&theme=tokyonight)]
 
 ### Top Languages
-[![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
+[![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=alex-battikha)]
 
 ### Featured Projects
 [![ThermoGo](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Hackathon-Summer-2020)](https://github.com/alex-battikha/Hackathon-Summer-2020)
