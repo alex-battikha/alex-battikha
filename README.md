@@ -22,7 +22,7 @@
 [![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
 
 ### Featured Projects
-[![ThermoGo](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Hackathon-Summer-2020)](https://github.com/anuraghazra/github-readme-stats)
-[![Fusion Strike](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Fusion-Strike)](https://github.com/anuraghazra/github-readme-stats)
-[![T-Rex Game](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=T-Rex-Game)](https://github.com/anuraghazra/github-readme-stats)
-[![Snake Game](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Snake-Game)](https://github.com/anuraghazra/github-readme-stats)
+[![ThermoGo](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Hackathon-Summer-2020)](https://github.com/alex-battikha/Hackathon-Summer-2020)
+[![Fusion Strike](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Fusion-Strike)](https://github.com/alex-battikha/Fusion-Strike)
+[![T-Rex Game](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=T-Rex-Game)](https://github.com/alex-battikha/T-Rex-Game)
+[![Snake Game](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Snake-Game)](https://github.com/alex-battikha/Snake-Game)
