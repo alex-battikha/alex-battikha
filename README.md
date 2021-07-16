@@ -11,8 +11,8 @@
 
 ### Programming Experience
 - 5+ year programmer
-- 50+ Repository
-- 150+ Commits in 2021
+- 55+ Repository
+- 180+ Commits in 2021
 - Actively Programming in 5+ languages
 
 ### Analytics
