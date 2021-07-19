@@ -1,5 +1,9 @@
 <h1 align="center">Hi there, I'm Alex👋</h1>
 
+<p align="center">
+    <img align="center" alt="visitors" src="https://gpvc.arturio.dev/alex-battikha" />
+</p>
+
 ### Experience in Languages
 ![langs](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen)
 ![lamgs](https://img.shields.io/badge/JavaScript-519667?style=for-the-badge&logo=javascript&logoColor=black)
