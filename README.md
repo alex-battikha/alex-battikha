@@ -26,7 +26,7 @@
 ![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=alex-battikha)
 
 ### Featured Projects
-[![ThermoGo](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Hackathon-Summer-2020)](https://github.com/alex-battikha/Hackathon-Summer-2020)
+[![Track-Color](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=TrackColor)](https://github.com/alex-battikha/TrackColor)
 [![Fusion Strike](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Fusion-Strike)](https://github.com/alex-battikha/Fusion-Strike)
 [![T-Rex Game](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=T-Rex-Game)](https://github.com/alex-battikha/T-Rex-Game)
 [![Personal Portfolio](https://github-readme-stats.vercel.app/api/pin/?username=alex-battikha&repo=Personal-Portfolio-Website)](https://github.com/alex-battikha/Personal-Portfolio-Website)
