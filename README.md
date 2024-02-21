@@ -1,8 +1,5 @@
 <h1 align="center">Hi there, I'm Alex👋</h1>
-
-<p align="center">
-    <img align="center" alt="visitors" src="https://gpvc.arturio.dev/alex-battikha" />
-</p>
+<h3 align="center">Passionate and results-oriented aspiring robotics engineer, dedicated to leveraging robotics and computer science for positive societal impact. Driven by the desire to innovate and contribute to meaningful advancements in robotics technology.</h3>
 
 ### Experience in Languages
 ![langs](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen)
@@ -16,7 +13,6 @@
 ### Programming Experience
 - 5+ year programmer
 - 55+ Repository
-- 300+ Commits in the Past Year
 - Actively Programming in 5+ languages
 
 ### Analytics
