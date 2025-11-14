@@ -12,7 +12,7 @@
 
 ### Programming Experience
 - 5+ year programmer
-- 55+ Repository
+- 55+ Repositories
 - Actively Programming in 5+ languages
 
 ### Analytics
