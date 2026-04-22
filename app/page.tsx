@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -14,8 +15,53 @@ import {
   toolbox,
 } from "@/lib/content";
 import { GlobalSpotlight, SpotlightDiv, SpotlightLink } from "@/components/Spotlight";
+import { CommandPalette } from "@/components/CommandPalette";
+import { Toast } from "@/components/Toast";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { TiltCard } from "@/components/TiltCard";
+import { Greeting } from "@/components/Greeting";
+import { ShippedBadge } from "@/components/ShippedBadge";
+import { Konami } from "@/components/Konami";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+const SECTIONS = ["top", "work", "wins", "how", "contact"] as const;
 
 export default function Home() {
+  const [toast, setToast] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string>("top");
+
+  const showToast = useCallback((message: string) => {
+    setToast(message);
+    window.setTimeout(() => setToast((curr) => (curr === message ? null : curr)), 1800);
+  }, []);
+
+  const copyEmail = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      showToast(`Copied ${profile.email}`);
+    } catch {
+      showToast("Couldn't copy — try ⌘C");
+    }
+  }, [showToast]);
+
+  useEffect(() => {
+    const els = SECTIONS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => Boolean(el)
+    );
+    if (els.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target.id) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#05060a] text-white">
       {/* ambient: subtle cyan + amber glows, no purple */}
@@ -27,11 +73,15 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top,transparent_30%,#05060a_80%)]" />
       <div className="pointer-events-none fixed inset-0 bg-grid opacity-[0.06]" />
 
+      <ScrollProgress />
       <GlobalSpotlight />
+      <CommandPalette onCopyEmail={copyEmail} />
+      <Toast message={toast} />
+      <Konami />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-8 sm:py-12">
-        <Nav />
-        <Hero />
+        <Nav active={activeSection} />
+        <Hero onCopyEmail={copyEmail} />
         <Marquee />
         <Now />
         <Stats />
@@ -47,43 +97,133 @@ export default function Home() {
   );
 }
 
-function Nav() {
+function Nav({ active }: { active: string }) {
+  const [open, setOpen] = useState(false);
+  const items: Array<[string, string]> = [
+    ["work", "Building"],
+    ["wins", "Wins"],
+    ["how", "How I work"],
+    ["contact", "Contact"],
+  ];
   return (
-    <nav className="mb-20 flex items-center justify-between">
-      <a href="#top" className="flex items-center gap-2 font-mono text-xs tracking-wider text-white/70">
-        <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-br from-cyan-300 to-sky-500" />
-        <span>ab.</span>
-      </a>
-      <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1 backdrop-blur-xl sm:flex">
-        {[
-          ["work", "Building"],
-          ["wins", "Wins"],
-          ["how", "How I work"],
-          ["contact", "Contact"],
-        ].map(([id, label]) => (
-          <a
-            key={id}
-            href={`#${id}`}
-            className="rounded-full px-4 py-1.5 text-xs text-white/70 transition hover:bg-white/[0.08] hover:text-white"
+    <>
+      <nav className="mb-20 flex items-center justify-between gap-3">
+        <a
+          href="#top"
+          aria-label="ab. — home"
+          className="group inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white/70 transition hover:text-white"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.svg"
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded-lg shadow-[0_6px_20px_-6px_rgba(34,211,238,0.55)] transition group-hover:scale-[1.04]"
+          />
+          <span className="hidden sm:inline">ab.</span>
+        </a>
+        <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1 backdrop-blur-xl sm:flex">
+          {items.map(([id, label]) => {
+            const isActive = active === id;
+            return (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`rounded-full px-4 py-1.5 text-xs transition ${
+                  isActive
+                    ? "bg-white/[0.1] text-white"
+                    : "text-white/70 hover:bg-white/[0.08] hover:text-white"
+                }`}
+              >
+                {label}
+              </a>
+            );
+          })}
+        </div>
+        <div className="flex items-center gap-2">
+          <kbd
+            aria-hidden
+            className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] text-white/55 backdrop-blur-xl md:inline-flex"
+            title="Press ⌘K to open the command palette"
           >
-            {label}
+            <span>⌘</span>
+            <span>K</span>
+          </kbd>
+          <ThemeToggle />
+          <a
+            href={profile.calendar}
+            target="_blank"
+            rel="noreferrer"
+            className="group hidden items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-1.5 text-xs text-white backdrop-blur-xl transition hover:bg-white/[0.1] sm:inline-flex"
+          >
+            Book 15 min
+            <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </a>
-        ))}
-      </div>
-      <a
-        href={profile.calendar}
-        target="_blank"
-        rel="noreferrer"
-        className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-1.5 text-xs text-white backdrop-blur-xl transition hover:bg-white/[0.1]"
-      >
-        Book 15 min
-        <span className="transition-transform group-hover:translate-x-0.5">→</span>
-      </a>
-    </nav>
+          <button
+            type="button"
+            aria-label="Open menu"
+            aria-expanded={open}
+            onClick={() => setOpen(true)}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/80 backdrop-blur-xl transition hover:bg-white/[0.08] sm:hidden"
+          >
+            <span className="sr-only">Open menu</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+      {open && (
+        <div className="fixed inset-0 z-[65] sm:hidden" onClick={() => setOpen(false)}>
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+          <div
+            className="absolute inset-x-4 top-4 rounded-2xl border border-white/15 bg-[#0a0c12]/95 p-2 shadow-2xl backdrop-blur-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-3 py-2">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-white/40">Menu</span>
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="rounded-full p-1 text-white/60 hover:bg-white/[0.08]"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex flex-col py-1">
+              {items.map(([id, label]) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  onClick={() => setOpen(false)}
+                  className={`rounded-xl px-4 py-3 text-sm transition ${
+                    active === id ? "bg-white/[0.08] text-white" : "text-white/80 hover:bg-white/[0.05]"
+                  }`}
+                >
+                  {label}
+                </a>
+              ))}
+              <a
+                href={profile.calendar}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setOpen(false)}
+                className="mt-1 rounded-xl bg-white px-4 py-3 text-center text-sm font-medium text-black"
+              >
+                Book 15 minutes →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
-function Hero() {
+function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
   return (
     <section id="top" className="relative grid items-center gap-14 pb-28 md:grid-cols-[1fr_auto] md:pb-36">
       <div>
@@ -98,6 +238,7 @@ function Hero() {
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
           Building from San Diego · B.S. Bioengineering, UCSD ’{profile.expectedGrad.slice(-2)}
+          <Greeting />
         </motion.div>
 
         <motion.h1
@@ -106,7 +247,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mt-6 text-5xl font-semibold leading-[1.02] tracking-tight sm:text-7xl"
         >
-          <span className="bg-gradient-to-b from-white via-white to-white/50 bg-clip-text text-transparent">
+          <span className="hero-name bg-gradient-to-b from-white via-white to-white/50 bg-clip-text text-transparent">
             {profile.name}.
           </span>
         </motion.h1>
@@ -146,12 +287,25 @@ function Hero() {
             <span className="relative">Book 15 minutes</span>
             <span className="relative transition-transform group-hover:translate-x-0.5">→</span>
           </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm text-white/90 backdrop-blur-xl transition hover:bg-white/[0.08]"
+          <button
+            type="button"
+            onClick={onCopyEmail}
+            title="Click to copy"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm text-white/90 backdrop-blur-xl transition hover:bg-white/[0.08]"
           >
             {profile.email}
-          </a>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden
+              className="text-white/40 transition group-hover:text-white/80"
+            >
+              <rect x="4.5" y="4.5" width="8" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
+              <path d="M3 11V4a1.5 1.5 0 0 1 1.5-1.5H11" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+          </button>
         </motion.div>
       </div>
 
@@ -163,23 +317,29 @@ function Hero() {
         className="relative float"
       >
         <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-cyan-400/30 via-sky-400/20 to-amber-300/10 blur-2xl" />
-        <div className="relative h-[380px] w-[300px] overflow-hidden rounded-3xl border border-white/15 bg-white/[0.03] p-2 backdrop-blur-xl">
-          <Image
-            src={profile.headshot}
-            alt={profile.name}
-            width={600}
-            height={800}
-            className="h-full w-full rounded-2xl object-cover"
-            priority
-          />
-          <div className="pointer-events-none absolute inset-2 rounded-2xl bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6">
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/60">
-              Founder · Researcher
+        <TiltCard className="relative h-[380px] w-[300px]">
+          <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/15 bg-white/[0.03] p-2 backdrop-blur-xl">
+            <Image
+              src={profile.headshot}
+              alt={profile.name}
+              width={600}
+              height={800}
+              className="h-full w-full rounded-2xl object-cover"
+              priority
+            />
+            <div className="pointer-events-none absolute inset-2 rounded-2xl bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <div
+              className="pointer-events-none absolute inset-2 rounded-2xl opacity-0 transition-opacity duration-200 tilt-card__sheen"
+              aria-hidden
+            />
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/60">
+                Founder · Researcher
+              </div>
+              <div className="mt-1 text-lg font-semibold">Jacobs Scholar</div>
             </div>
-            <div className="mt-1 text-lg font-semibold">Jacobs Scholar</div>
           </div>
-        </div>
+        </TiltCard>
       </motion.div>
     </section>
   );
@@ -214,6 +374,9 @@ function Now() {
   return (
     <section className="mb-24">
       <SectionHeader kicker="00 · Right now" title="What I'm working on this week" />
+      <div className="mt-5">
+        <ShippedBadge />
+      </div>
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {now.map((line, i) => (
           <SpotlightDiv
