@@ -2,7 +2,7 @@ export const profile = {
   name: "Alex Battikha",
   tagline: "I build things. Currently: strvX and surgical robots.",
   longTagline:
-    "I build things. Currently: strvX, AI that handles the busywork for small businesses so owners can actually run them. On the side, I research surgical robotics at UC San Diego.",
+    "I build things. Currently: strvX, bringing AI automation to businesses and government to cut costs and grow revenue. A services arm for custom builds, a product arm for off-the-shelf systems. On the side, I research surgical robotics at UC San Diego.",
   location: "San Diego, CA",
   school: "UC San Diego",
   program: "Bioengineering",
@@ -20,7 +20,7 @@ export const ventures = [
     role: "Founder",
     status: "Building now",
     blurb:
-      "AI that runs the boring parts of a small business so the owner can get back to running the business.",
+      "AI automation for businesses and government. A services arm for custom deployments and a product line shipping off-the-shelf systems. The goal is always the same: cut costs, grow revenue.",
     href: "https://strvx.com",
   },
   {
@@ -49,10 +49,10 @@ export const ventures = [
   },
   {
     name: "FTC 11212 · The Clueless",
-    role: "Captain · 6 years",
+    role: "Captain · Championship run",
     status: "World Champions",
     blurb:
-      "Six seasons leading the team to a World Championship in Houston. Robot reliability above 99%. Watch us in Behind the Bot.",
+      "Six seasons on the team, captain through the winning years. World Championship in Houston. Robot reliability above 99%. Watch us in Behind the Bot.",
     href: "https://www.youtube.com/watch?v=czSyygmNUbY",
   },
   {
@@ -141,11 +141,39 @@ export const projects = [
   },
 ];
 
+// Robotics & drone reel. IDs are YouTube video IDs (the 11-char string after "v=").
+export const reel = [
+  {
+    id: "rOTlvyjGcDg",
+    title: "FTC Worlds · Finals Match 3",
+    caption:
+      "Houston, 2024. The winning match. Captain and driver for The Clueless. 1st of 7,100+ teams.",
+  },
+  {
+    id: "czSyygmNUbY",
+    title: "Behind the Bot · The Clueless",
+    caption:
+      "FIRST's documentary on our championship run. Six seasons of building, breaking, and coming back.",
+  },
+  {
+    id: "kBFS7SaGf_A",
+    title: "Robot Reveal · Freight Frenzy",
+    caption:
+      "Season-opening reveal of the robot I helped design and drive. Mechanical lead, season 4.",
+  },
+  {
+    id: "MfP8-b64Ymw",
+    title: "Environmental Remediation UAV",
+    caption:
+      "Autonomous pollution drone. YOLOv8 tuned to 96% precision on 6k+ images for ocean-trash detection.",
+  },
+];
+
 export const stats = [
   { label: "World Championship", value: "1st / 7,100+" },
   { label: "Jacobs Scholars / year", value: "1 of 9" },
-  { label: "FTC mechanical uptime", value: "99.1%" },
-  { label: "YOLOv8 precision", value: "96%" },
+  { label: "San Diego Remarkable Teens", value: "1 of 25" },
+  { label: "Patent @ Johns Hopkins", value: "Pending" },
 ];
 
 export const links = [
@@ -171,19 +199,19 @@ export const toolbox = {
 
 export const pillars = [
   {
-    k: "Reliability is the real flex",
-    v: "99.1% mechanical uptime across a 25-week build. Nobody claps for a robot that dies in the final.",
+    k: "Boring beats clever",
+    v: "Early FTC seasons I chased clever mechanisms that broke at the worst moments. Championship season we ran at 99.1% uptime: mostly boring parts, tested to death. I default to the version that works every time over the version that impresses on a whiteboard.",
   },
   {
-    k: "Own the whole stack",
-    v: "CAD, CNC, code, driver. I learn every layer before I trust the robot in my hands.",
+    k: "Own every layer",
+    v: "At FTC 11212 I was mechanical lead, driver, and captain through the winning seasons. At strvX I'm the engineer, designer, and the one selling it. If I'm accountable for the outcome, I don't get to hide behind someone else's part of the stack.",
   },
   {
-    k: "Calm is a skill",
-    v: "There's pressure not to screw up. You talk through the chaos instead of over it.",
+    k: "Queue is louder than the match",
+    v: "Two minutes between games, everyone shouting corrections at once. The real skill isn't staying calm. It's picking the two or three voices that actually help and tuning out the rest. That filter is the whole game anywhere the stakes are real.",
   },
   {
-    k: "Play the long game",
-    v: "Six years on one team. Worlds didn't happen in year one, or year three.",
+    k: "Worlds wasn't year one",
+    v: "Six seasons on FTC 11212 to reach Houston. Most of what I care about now (strvX, ecPATH, research) are long bets I'm still grinding on. The best results almost always live inside the seasons that don't look like progress.",
   },
 ];

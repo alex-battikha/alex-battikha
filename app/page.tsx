@@ -13,6 +13,7 @@ import {
   pillars,
   now,
   toolbox,
+  reel,
 } from "@/lib/content";
 import { GlobalSpotlight, SpotlightDiv, SpotlightLink } from "@/components/Spotlight";
 import { CommandPalette } from "@/components/CommandPalette";
@@ -23,8 +24,21 @@ import { Greeting } from "@/components/Greeting";
 import { ShippedBadge } from "@/components/ShippedBadge";
 import { Konami } from "@/components/Konami";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Reel } from "@/components/Reel";
 
 const SECTIONS = ["top", "work", "wins", "how", "contact"] as const;
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function navClick(id: string) {
+  return (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToSection(id);
+  };
+}
 
 export default function Home() {
   const [toast, setToast] = useState<string | null>(null);
@@ -40,9 +54,18 @@ export default function Home() {
       await navigator.clipboard.writeText(profile.email);
       showToast(`Copied ${profile.email}`);
     } catch {
-      showToast("Couldn't copy — try ⌘C");
+      showToast("Couldn't copy. Try ⌘C");
     }
   }, [showToast]);
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      window.history.replaceState(null, "", window.location.pathname);
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
 
   useEffect(() => {
     const els = SECTIONS.map((id) => document.getElementById(id)).filter(
@@ -88,6 +111,7 @@ export default function Home() {
         <Ventures />
         <Wins />
         <Projects />
+        <ReelSection />
         <Toolbox />
         <Philosophy />
         <Contact />
@@ -110,18 +134,18 @@ function Nav({ active }: { active: string }) {
       <nav className="mb-20 flex items-center justify-between gap-3">
         <a
           href="#top"
-          aria-label="ab. — home"
-          className="group inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white/70 transition hover:text-white"
+          onClick={navClick("top")}
+          aria-label="ab. home"
+          className="group inline-flex items-center font-mono text-xs tracking-wider text-white/70 transition hover:text-white"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo.svg"
-            alt=""
+            alt="ab."
             width={28}
             height={28}
             className="h-7 w-7 rounded-lg shadow-[0_6px_20px_-6px_rgba(34,211,238,0.55)] transition group-hover:scale-[1.04]"
           />
-          <span className="hidden sm:inline">ab.</span>
         </a>
         <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1 backdrop-blur-xl sm:flex">
           {items.map(([id, label]) => {
@@ -130,6 +154,7 @@ function Nav({ active }: { active: string }) {
               <a
                 key={id}
                 href={`#${id}`}
+                onClick={navClick(id)}
                 className={`rounded-full px-4 py-1.5 text-xs transition ${
                   isActive
                     ? "bg-white/[0.1] text-white"
@@ -198,7 +223,11 @@ function Nav({ active }: { active: string }) {
                 <a
                   key={id}
                   href={`#${id}`}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpen(false);
+                    scrollToSection(id);
+                  }}
                   className={`rounded-xl px-4 py-3 text-sm transition ${
                     active === id ? "bg-white/[0.08] text-white" : "text-white/80 hover:bg-white/[0.05]"
                   }`}
@@ -231,13 +260,15 @@ function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/70 backdrop-blur-xl"
+          className="flex flex-wrap items-center gap-x-3 gap-y-2"
         >
-          <span className="relative inline-flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          <span className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/70 backdrop-blur-xl">
+            <span className="relative inline-flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            </span>
+            Building from San Diego · UCSD ’{profile.expectedGrad.slice(-2)}
           </span>
-          Building from San Diego · B.S. Bioengineering, UCSD ’{profile.expectedGrad.slice(-2)}
           <Greeting />
         </motion.div>
 
@@ -267,8 +298,9 @@ function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
           >
             strvX
           </a>
-          , AI that handles the busywork for small businesses so owners can actually run them. On
-          the side, I research <span className="text-white">surgical robotics</span> at UC San Diego.
+          , bringing AI automation to businesses and government to cut costs and grow revenue. A
+          services arm for custom builds, a product arm for off-the-shelf systems. On the side, I
+          research <span className="text-white">surgical robotics</span> at UC San Diego.
         </motion.p>
 
         <motion.div
@@ -314,10 +346,10 @@ function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.2 }}
-        className="relative float"
+        className="relative float mx-auto w-full max-w-[300px] md:mx-0"
       >
         <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-cyan-400/30 via-sky-400/20 to-amber-300/10 blur-2xl" />
-        <TiltCard className="relative h-[380px] w-[300px]">
+        <TiltCard className="relative aspect-[3/4] w-full">
           <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/15 bg-white/[0.03] p-2 backdrop-blur-xl">
             <Image
               src={profile.headshot}
@@ -392,10 +424,25 @@ function Now() {
   );
 }
 
+function ReelSection() {
+  return (
+    <section id="reel" className="mb-28">
+      <SectionHeader kicker="04 · In motion" title="Robotics & drones" />
+      <p className="mt-6 max-w-2xl text-white/60">
+        Field footage from the things I've built. FTC matches, swarm experiments, autonomous drone
+        runs. Click a tile to play.
+      </p>
+      <div className="mt-10">
+        <Reel videos={reel} />
+      </div>
+    </section>
+  );
+}
+
 function Toolbox() {
   return (
     <section className="mb-28">
-      <SectionHeader kicker="04 · Toolbox" title="Tech I reach for" />
+      <SectionHeader kicker="05 · Toolbox" title="Tech I reach for" />
       <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(toolbox).map(([group, items]) => (
           <SpotlightDiv
@@ -547,10 +594,10 @@ function Projects() {
 function Philosophy() {
   return (
     <section id="how" className="mb-28">
-      <SectionHeader kicker="05 · Operating system" title="How I work" />
+      <SectionHeader kicker="06 · Operating system" title="How I work" />
       <p className="mt-6 max-w-2xl text-white/60">
-        Six years captaining FTC 11212, rookie season to World Champions (1st of 7,100+). A few
-        things that stuck.
+        Six seasons with FTC 11212, rookie year to World Champions (1st of 7,100+). Captain through
+        the winning years. Four lessons that stuck.
       </p>
       <div className="mt-10 grid gap-4 md:grid-cols-2">
         {pillars.map((p, i) => (
@@ -587,7 +634,7 @@ function Contact() {
           Let's talk
         </div>
         <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">
-          Have an idea, a deal, or want to jam on{" "}
+          Have an idea, a deal, or want to talk about{" "}
           <span className="bg-gradient-to-r from-cyan-200 via-sky-200 to-amber-200 bg-clip-text text-transparent">
             AI and robotics?
           </span>

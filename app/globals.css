@@ -136,7 +136,7 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
 
-/* tilt card — 3D gyroscope feel on the headshot */
+/* tilt card: 3D gyroscope feel on the headshot */
 .tilt-card {
   perspective: 1000px;
   --rx: 0deg;
@@ -179,7 +179,7 @@ body {
   animation-iteration-count: 1;
 }
 
-/* light theme overrides — flips background + text, keeps cyan/amber accents */
+/* light theme overrides: flips background + text, keeps cyan/amber accents */
 html.light,
 html[data-theme="light"] {
   --bg: #f5f6fa;
@@ -269,7 +269,7 @@ html[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(11, 
 html.light ::selection,
 html[data-theme="light"] ::selection { background: rgba(14, 165, 233, 0.2); color: #0b0e14; }
 
-/* hero name — gradient reads as white in dark mode; force solid black in light mode */
+/* hero name: gradient reads as white in dark mode; force solid black in light mode */
 html.light .hero-name,
 html[data-theme="light"] .hero-name {
   background: none !important;

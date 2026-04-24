@@ -36,8 +36,8 @@ export function Greeting() {
 
   if (!state) return null;
   return (
-    <span className="ml-2 hidden font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 sm:inline">
-      · {state.phase} · {state.time} PT
+    <span className="hidden whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 sm:inline">
+      {state.phase} · {state.time} PT
     </span>
   );
 }
