@@ -177,14 +177,14 @@ export const stats = [
 ];
 
 export const links = [
-  { label: "Email", href: `mailto:${profile.email}`, value: profile.email },
-  { label: "LinkedIn", href: profile.linkedin, value: "/in/alex-battikha" },
-  { label: "GitHub", href: profile.github, value: "@alex-battikha" },
-  { label: "Book 15 min", href: profile.calendar, value: "cal.com/alex-battikha" },
+  { label: "Email", icon: "email", href: `mailto:${profile.email}`, value: profile.email },
+  { label: "LinkedIn", icon: "linkedin", href: profile.linkedin, value: "/in/alex-battikha" },
+  { label: "GitHub", icon: "github", href: profile.github, value: "@alex-battikha" },
+  { label: "Book 15 min", icon: "calendar", href: profile.calendar, value: "cal.com/alex-battikha" },
 ];
 
 export const now = [
-  "Shipping the first strvX customer pilots.",
+  "Working with strvX partners and active clients to expand the network.",
   "Co-leading ecPATH toward a Nature submission.",
   "Tuning quant strategies for live deployment.",
   "Bioengineering coursework at UCSD, year one of four.",

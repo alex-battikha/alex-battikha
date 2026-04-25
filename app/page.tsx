@@ -279,7 +279,7 @@ function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
           className="mt-6 text-5xl font-semibold leading-[1.02] tracking-tight sm:text-7xl"
         >
           <span className="hero-name bg-gradient-to-b from-white via-white to-white/50 bg-clip-text text-transparent">
-            {profile.name}.
+            {profile.name}
           </span>
         </motion.h1>
 
@@ -649,9 +649,12 @@ function Contact() {
               href={l.href}
               target="_blank"
               rel="noreferrer"
+              aria-label={l.label}
               className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 transition hover:border-white/25 hover:bg-white/[0.08]"
             >
-              <span className="text-xs uppercase tracking-wider text-white/50">{l.label}</span>
+              <span className="text-white/60" aria-hidden>
+                <ContactIcon name={l.icon} />
+              </span>
               <span className="font-mono text-sm text-white/90">
                 {l.value} <span className="text-white/40">↗</span>
               </span>
@@ -683,4 +686,37 @@ function SectionHeader({ kicker, title }: { kicker: string; title: string }) {
       </h2>
     </div>
   );
+}
+
+function ContactIcon({ name }: { name: string }) {
+  const common = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "currentColor" } as const;
+  if (name === "email") {
+    return (
+      <svg {...common} aria-hidden>
+        <path d="M3 5.5A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5v-13Zm2.3.5 6.7 5 6.7-5H5.3ZM19 7.8l-6.45 4.82a.9.9 0 0 1-1.1 0L5 7.8V18h14V7.8Z" />
+      </svg>
+    );
+  }
+  if (name === "linkedin") {
+    return (
+      <svg {...common} aria-hidden>
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.84v1.64h.05c.54-1 1.85-2.05 3.81-2.05 4.08 0 4.83 2.64 4.83 6.08V21H18.7v-5.55c0-1.32-.03-3.02-1.87-3.02-1.87 0-2.16 1.43-2.16 2.92V21H10V9Z" />
+      </svg>
+    );
+  }
+  if (name === "github") {
+    return (
+      <svg {...common} aria-hidden>
+        <path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.35-3.37-1.35-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.13-4.55-5.03 0-1.11.39-2.02 1.03-2.73-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.04A9.4 9.4 0 0 1 12 7.07c.85.01 1.7.12 2.5.35 1.9-1.31 2.74-1.04 2.74-1.04.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.73 0 3.91-2.34 4.77-4.57 5.02.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" />
+      </svg>
+    );
+  }
+  if (name === "calendar") {
+    return (
+      <svg {...common} aria-hidden>
+        <path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1.5A1.5 1.5 0 0 1 21 5.5v14A1.5 1.5 0 0 1 19.5 21h-15A1.5 1.5 0 0 1 3 19.5v-14A1.5 1.5 0 0 1 4.5 4H6V3a1 1 0 0 1 1-1Zm12 8H5v9.5c0 .28.22.5.5.5h13a.5.5 0 0 0 .5-.5V10ZM5 6v2h14V6H5Z" />
+      </svg>
+    );
+  }
+  return null;
 }

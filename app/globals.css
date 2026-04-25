@@ -276,3 +276,35 @@ html[data-theme="light"] .hero-name {
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
 }
+
+/* gradient-clipped headings render as near-invisible on light bg; force solid dark */
+html.light .bg-clip-text.text-transparent,
+html[data-theme="light"] .bg-clip-text.text-transparent {
+  background: none !important;
+  color: #0b0e14 !important;
+  -webkit-text-fill-color: #0b0e14 !important;
+}
+
+/* cyan/sky accent text is too pale on light bg: darken to cyan-700-ish */
+html.light .text-cyan-200,
+html[data-theme="light"] .text-cyan-200 { color: #0e7490 !important; }
+html.light .text-cyan-200\/90,
+html[data-theme="light"] .text-cyan-200\/90 { color: rgba(14, 116, 144, 0.92) !important; }
+html.light .text-cyan-300,
+html[data-theme="light"] .text-cyan-300 { color: #0e7490 !important; }
+html.light .text-cyan-300\/40,
+html[data-theme="light"] .text-cyan-300\/40 { color: rgba(14, 116, 144, 0.55) !important; }
+html.light .text-cyan-300\/70,
+html[data-theme="light"] .text-cyan-300\/70 { color: rgba(14, 116, 144, 0.85) !important; }
+html.light .text-cyan-300\/80,
+html[data-theme="light"] .text-cyan-300\/80 { color: rgba(14, 116, 144, 0.95) !important; }
+html.light .decoration-cyan-300\/30,
+html[data-theme="light"] .decoration-cyan-300\/30 { text-decoration-color: rgba(14, 116, 144, 0.45) !important; }
+html.light .hover\:decoration-cyan-200:hover,
+html[data-theme="light"] .hover\:decoration-cyan-200:hover { text-decoration-color: #0e7490 !important; }
+
+/* venture status pill surfaces: slightly stronger on light bg */
+html.light .border-cyan-300\/20,
+html[data-theme="light"] .border-cyan-300\/20 { border-color: rgba(14, 116, 144, 0.3) !important; }
+html.light .bg-cyan-300\/\[0\.04\],
+html[data-theme="light"] .bg-cyan-300\/\[0\.04\] { background: rgba(14, 116, 144, 0.08) !important; }
