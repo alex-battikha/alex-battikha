@@ -347,14 +347,14 @@ function Hero() {
         className="relative float mx-auto w-full max-w-[300px] md:mx-0"
       >
         <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-cyan-400/30 via-sky-400/20 to-amber-300/10 blur-2xl" />
-        <TiltCard className="relative aspect-[3/4] w-full">
+        <TiltCard className="relative aspect-[4/5] w-full">
           <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/15 bg-white/[0.03] p-2 backdrop-blur-xl">
             <Image
               src={profile.headshot}
               alt={profile.name}
               width={600}
               height={800}
-              className="h-full w-full rounded-2xl object-cover"
+              className="h-full w-full rounded-2xl object-cover object-top"
               priority
             />
             <div className="pointer-events-none absolute inset-2 rounded-2xl bg-gradient-to-t from-black/70 via-transparent to-transparent" />

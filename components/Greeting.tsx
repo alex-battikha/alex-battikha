@@ -17,7 +17,7 @@ function partsForPT() {
   const time = fmt.format(new Date());
   const hour = parseInt(hourFmt.format(new Date()), 10);
   let phase: string;
-  if (hour < 5) phase = "Burning the midnight oil from San Diego";
+  if (hour < 5) phase = "Up late in San Diego";
   else if (hour < 12) phase = "Good morning from San Diego";
   else if (hour < 17) phase = "Good afternoon from San Diego";
   else if (hour < 21) phase = "Good evening from San Diego";
