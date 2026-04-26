@@ -104,7 +104,7 @@ export default function Home() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-8 sm:py-12">
         <Nav active={activeSection} />
-        <Hero onCopyEmail={copyEmail} />
+        <Hero />
         <Marquee />
         <Now />
         <Stats />
@@ -252,7 +252,7 @@ function Nav({ active }: { active: string }) {
   );
 }
 
-function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
+function Hero() {
   return (
     <section id="top" className="relative grid items-center gap-14 pb-28 md:grid-cols-[1fr_auto] md:pb-36">
       <div>
@@ -319,10 +319,8 @@ function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
             <span className="relative">Book 15 minutes</span>
             <span className="relative transition-transform group-hover:translate-x-0.5">→</span>
           </a>
-          <button
-            type="button"
-            onClick={onCopyEmail}
-            title="Click to copy"
+          <a
+            href={`mailto:${profile.email}`}
             className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm text-white/90 backdrop-blur-xl transition hover:bg-white/[0.08]"
           >
             {profile.email}
@@ -334,10 +332,10 @@ function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
               aria-hidden
               className="text-white/40 transition group-hover:text-white/80"
             >
-              <rect x="4.5" y="4.5" width="8" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
-              <path d="M3 11V4a1.5 1.5 0 0 1 1.5-1.5H11" stroke="currentColor" strokeWidth="1.2" />
+              <path d="M2.5 4h11a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5Z" stroke="currentColor" strokeWidth="1.2" />
+              <path d="m2.7 4.7 5.3 4 5.3-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
             </svg>
-          </button>
+          </a>
         </motion.div>
       </div>
 

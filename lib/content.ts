@@ -53,7 +53,7 @@ export const ventures = [
     status: "World Champions",
     blurb:
       "Six seasons on the team, captain through the winning years. World Championship in Houston. Robot reliability above 99%. Watch us in Behind the Bot.",
-    href: "https://www.youtube.com/watch?v=czSyygmNUbY",
+    href: "https://www.thecluelessftc.org/our-robots/centerstage",
   },
   {
     name: "Swarm Robotics @ Johns Hopkins",
@@ -185,7 +185,7 @@ export const links = [
 
 export const now = [
   "Working with strvX partners and active clients to expand the network.",
-  "Co-leading ecPATH toward a Nature submission.",
+  "Building a tool to surface fixer-upper properties in target markets, with my dad on the deal side.",
   "Tuning quant strategies for live deployment.",
   "Bioengineering coursework at UCSD, year one of four.",
 ];
