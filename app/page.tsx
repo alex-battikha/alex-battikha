@@ -169,7 +169,7 @@ function Nav({ active }: { active: string }) {
         <div className="flex items-center gap-2">
           <kbd
             aria-hidden
-            className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] text-white/55 backdrop-blur-xl md:inline-flex"
+            className="hidden h-9 items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] px-3 font-mono text-[10px] text-white/55 backdrop-blur-xl md:inline-flex"
             title="Press ⌘K to open the command palette"
           >
             <span>⌘</span>
@@ -180,7 +180,7 @@ function Nav({ active }: { active: string }) {
             href={profile.calendar}
             target="_blank"
             rel="noreferrer"
-            className="group hidden items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-1.5 text-xs text-white backdrop-blur-xl transition hover:bg-white/[0.1] sm:inline-flex"
+            className="group hidden h-9 items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 text-xs text-white backdrop-blur-xl transition hover:bg-white/[0.1] sm:inline-flex"
           >
             Book 15 min
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
