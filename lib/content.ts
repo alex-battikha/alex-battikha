@@ -2,7 +2,7 @@ export const profile = {
   name: "Alex Battikha",
   tagline: "I build things. Currently: strvX and surgical robots.",
   longTagline:
-    "I build things. Currently: strvX, bringing AI automation to businesses and government to cut costs and grow revenue. A services arm for custom builds, a product arm for off-the-shelf systems. On the side, I research surgical robotics at UC San Diego.",
+    "I build things. I run strvX, an AI automation company for businesses and government. We sell it two ways: custom builds through the services arm, and packaged products on the product side. After 10+ years in robotics, what I want most is to use it to change lives, so I research surgical robotics at UCSD.",
   location: "San Diego, CA",
   school: "UC San Diego",
   program: "Bioengineering",
@@ -20,7 +20,7 @@ export const ventures = [
     role: "Founder",
     status: "Building now",
     blurb:
-      "AI automation for businesses and government. A services arm for custom deployments and a product line shipping off-the-shelf systems. The goal is always the same: cut costs, grow revenue.",
+      "AI automation for businesses and government. Custom builds on the services side, packaged products on the product side. Customers see lower costs and more revenue.",
     href: "https://strvx.com",
   },
   {
@@ -153,7 +153,7 @@ export const reel = [
     id: "czSyygmNUbY",
     title: "Behind the Bot · The Clueless",
     caption:
-      "FIRST's documentary on our championship run. Six seasons of building, breaking, and coming back.",
+      "FIRST's documentary on our championship run. Covers all six seasons, including the ones we got knocked out of early.",
   },
   {
     id: "kBFS7SaGf_A",
@@ -200,7 +200,7 @@ export const toolbox = {
 export const pillars = [
   {
     k: "Boring beats clever",
-    v: "Early FTC seasons I chased clever mechanisms that broke at the worst moments. Championship season we ran at 99.1% uptime: mostly boring parts, tested to death. I default to the version that works every time over the version that impresses on a whiteboard.",
+    v: "Early FTC seasons I kept building clever mechanisms that broke when it mattered. Championship season we ran 99.1% uptime, mostly off boring parts we'd tested to death. Now I'd rather ship the version I know will hold up than the one that looks impressive.",
   },
   {
     k: "Own every layer",
@@ -208,10 +208,10 @@ export const pillars = [
   },
   {
     k: "Queue is louder than the match",
-    v: "Two minutes between games, everyone shouting corrections at once. The real skill isn't staying calm. It's picking the two or three voices that actually help and tuning out the rest. That filter is the whole game anywhere the stakes are real.",
+    v: "Two minutes between matches and four people are yelling fixes at me at once. Staying calm was the easy part. The harder one was figuring out, in real time, whose feedback to actually act on. I lean on that filter every time the room gets loud now.",
   },
   {
     k: "Worlds wasn't year one",
-    v: "Six seasons on FTC 11212 to reach Houston. Most of what I care about now (strvX, ecPATH, research) are long bets I'm still grinding on. The best results almost always live inside the seasons that don't look like progress.",
+    v: "Six seasons with FTC 11212 before we won in Houston. strvX, ecPATH, research at UCSD: I'm still in the messy middle of all three. The best stuff I've done has come out of stretches that felt like this.",
   },
 ];

@@ -289,7 +289,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl"
         >
-          I build things. Currently:{" "}
+          I build things. I run{" "}
           <a
             href="https://strvx.com"
             target="_blank"
@@ -298,9 +298,18 @@ function Hero() {
           >
             strvX
           </a>
-          , bringing AI automation to businesses and government to cut costs and grow revenue. A
-          services arm for custom builds, a product arm for off-the-shelf systems. On the side, I
-          research <span className="text-white">surgical robotics</span> at UC San Diego.
+          , an AI automation company for businesses and government. We sell it two ways: custom
+          builds through the services arm, and packaged products on the product side.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="mt-5 max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl"
+        >
+          After <span className="text-white">10+ years in robotics</span>, what I want most is to
+          use it to <span className="text-white">change lives</span>. That's why I research{" "}
+          <span className="text-white">surgical robotics</span> at UCSD.
         </motion.p>
 
         <motion.div
