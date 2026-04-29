@@ -14,6 +14,76 @@ export const profile = {
   calendar: "https://cal.com/alex-battikha/15min",
 };
 
+export const experiences = [
+  {
+    company: "Katomed",
+    role: "Software Engineering Intern",
+    bullets: ["Incoming. Joining the team to work on medical-device software."],
+    date: "Summer 2026",
+    status: "incoming" as "incoming" | "current" | "past",
+  },
+  {
+    company: "Sanford Burnham Prebys",
+    role: "Co-lead Developer · ecPATH",
+    bullets: [
+      "ML pipeline that spots extrachromosomal DNA from histopathology images.",
+      "Currently pending Nature submission; shipping into hospitals next.",
+    ],
+    date: "2025 → Present",
+    status: "current" as "incoming" | "current" | "past",
+  },
+  {
+    company: "ARCLab · UC San Diego",
+    role: "Undergraduate Researcher · LapSurge",
+    bullets: [
+      "Teleoperated laparoscopic surgery on a humanoid robot.",
+      "Working on tool-tip precision with ToF sensors and visual lasers.",
+    ],
+    date: "2025 → Present",
+    status: "current" as "incoming" | "current" | "past",
+  },
+  {
+    company: "strvX",
+    role: "Founder",
+    bullets: [
+      "AI automation for businesses and government.",
+      "Services arm for custom builds, product arm for off-the-shelf systems.",
+    ],
+    date: "2024 → Present",
+    status: "current" as "incoming" | "current" | "past",
+  },
+  {
+    company: "Johns Hopkins · Information Security Institute",
+    role: "Research Intern · Dr. Anton Dahbura",
+    bullets: [
+      "Built a 5-robot testbed proving a new fail-over protocol for wireless distributed systems.",
+      "Patent pending. Presented at JHU Design Day.",
+    ],
+    date: "Summer 2025",
+    status: "past" as "incoming" | "current" | "past",
+  },
+  {
+    company: "UCLA",
+    role: "Cryptographic Researcher · Prof. Miodrag Potkonjak",
+    bullets: [
+      "Designed a novel PUF for hardware-fingerprint cryptography.",
+      "Stress-tested it with NIST statistical suites and adversarial AI attacks.",
+    ],
+    date: "Summer 2024",
+    status: "past" as "incoming" | "current" | "past",
+  },
+  {
+    company: "FTC Team 11212 · The Clueless",
+    role: "Captain · Mechanical Lead · Driver",
+    bullets: [
+      "World Champions in Houston, 1st of 7,100+ teams.",
+      "Six seasons on the team, captain through the winning years. Featured in FIRST's Behind the Bot.",
+    ],
+    date: "2018 → 2024",
+    status: "past" as "incoming" | "current" | "past",
+  },
+];
+
 export const ventures = [
   {
     name: "strvX",

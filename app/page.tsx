@@ -14,6 +14,7 @@ import {
   now,
   toolbox,
   reel,
+  experiences,
 } from "@/lib/content";
 import { GlobalSpotlight, SpotlightDiv, SpotlightLink } from "@/components/Spotlight";
 import { CommandPalette } from "@/components/CommandPalette";
@@ -108,6 +109,7 @@ export default function Home() {
         <Marquee />
         <Now />
         <Stats />
+        <Experience />
         <Ventures />
         <Wins />
         <Projects />
@@ -434,7 +436,7 @@ function Now() {
 function ReelSection() {
   return (
     <section id="reel" className="mb-28">
-      <SectionHeader kicker="04 · In motion" title="Robotics & drones" />
+      <SectionHeader kicker="05 · In motion" title="Robotics & drones" />
       <p className="mt-6 max-w-2xl text-white/60">
         Field footage from the things I've built. FTC matches, swarm experiments, autonomous drone
         runs. Click a tile to play.
@@ -449,7 +451,7 @@ function ReelSection() {
 function Toolbox() {
   return (
     <section className="mb-28">
-      <SectionHeader kicker="05 · Toolbox" title="Tech I reach for" />
+      <SectionHeader kicker="06 · Toolbox" title="Tech I reach for" />
       <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(toolbox).map(([group, items]) => (
           <SpotlightDiv
@@ -493,10 +495,65 @@ function Stats() {
   );
 }
 
+function Experience() {
+  return (
+    <section id="experience" className="mb-28">
+      <SectionHeader kicker="01 · Experience" title="Where I've worked" />
+      <ol className="relative mt-12 ml-2 space-y-9 border-l border-white/15 pl-6 sm:pl-8">
+        {experiences.map((e) => (
+          <li key={e.company} className="relative">
+            <span
+              aria-hidden
+              className="absolute -left-[calc(1.5rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full border border-cyan-300/60 bg-[#05060a] shadow-[0_0_0_4px_rgba(34,211,238,0.12)] sm:-left-[calc(2rem+5px)]"
+            />
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <ExperienceDot status={e.status} />
+                  <h3 className="text-base font-semibold">{e.company}</h3>
+                </div>
+                <div className="mt-1 font-mono text-[11px] uppercase tracking-wider text-white/55">
+                  {e.role}
+                </div>
+                <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-white/70">
+                  {e.bullets.map((b, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan-300/70" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <span className="shrink-0 font-mono text-xs text-white/55 sm:pt-1">{e.date}</span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function ExperienceDot({ status }: { status: "incoming" | "current" | "past" }) {
+  const cls =
+    status === "current"
+      ? "bg-emerald-400"
+      : status === "incoming"
+        ? "bg-amber-300"
+        : "bg-white/30";
+  return (
+    <span className="relative inline-flex h-1.5 w-1.5 shrink-0">
+      {status !== "past" && (
+        <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${cls}`} />
+      )}
+      <span className={`relative inline-flex h-1.5 w-1.5 rounded-full ${cls}`} />
+    </span>
+  );
+}
+
 function Ventures() {
   return (
     <section id="work" className="mb-28">
-      <SectionHeader kicker="01 · What I'm building" title="Ventures & research" />
+      <SectionHeader kicker="02 · What I'm building" title="Ventures & research" />
       <div className="mt-10 grid gap-4 md:grid-cols-2">
         {ventures.map((v) => {
           const content = (
@@ -550,7 +607,7 @@ function Ventures() {
 function Wins() {
   return (
     <section id="wins" className="mb-28">
-      <SectionHeader kicker="02 · Signals" title="Wins & recognition" />
+      <SectionHeader kicker="03 · Signals" title="Wins & recognition" />
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {achievements.map((a) => (
           <SpotlightDiv
@@ -572,7 +629,7 @@ function Wins() {
 function Projects() {
   return (
     <section className="mb-28">
-      <SectionHeader kicker="03 · Shipped" title="Selected projects" />
+      <SectionHeader kicker="04 · Shipped" title="Selected projects" />
       <div className="mt-10 grid gap-4 md:grid-cols-3">
         {projects.map((p) => (
           <SpotlightDiv
@@ -601,7 +658,7 @@ function Projects() {
 function Philosophy() {
   return (
     <section id="how" className="mb-28">
-      <SectionHeader kicker="06 · Operating system" title="How I work" />
+      <SectionHeader kicker="07 · Operating system" title="How I work" />
       <p className="mt-6 max-w-2xl text-white/60">
         Six seasons with FTC 11212, rookie year to World Champions (1st of 7,100+). Captain through
         the winning years. Four lessons that stuck.
