@@ -49,7 +49,7 @@ export const experiences = [
       "ML pipeline that spots extrachromosomal DNA from histopathology images.",
       "Currently pending Nature submission; shipping into hospitals next.",
     ],
-    date: "2025 → Sep 2025",
+    date: "Jun 2024 → Sep 2025",
     status: "past" as "incoming" | "current" | "past",
   },
   {
