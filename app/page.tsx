@@ -630,15 +630,15 @@ function Projects() {
   return (
     <section className="mb-28">
       <SectionHeader kicker="04 · Shipped" title="Selected projects" />
-      <div className="mt-10 grid gap-4 md:grid-cols-3">
+      <div className="mt-10 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
           <SpotlightDiv
             key={p.name}
-            className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-xl transition hover:border-white/25"
+            className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-xl transition hover:border-white/25"
           >
             <h4 className="font-medium">{p.name}</h4>
             <p className="mt-2 text-sm leading-relaxed text-white/65">{p.blurb}</p>
-            <div className="mt-4 flex flex-wrap gap-1.5">
+            <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
               {p.tags.map((t) => (
                 <span
                   key={t}

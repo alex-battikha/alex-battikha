@@ -215,6 +215,12 @@ export const projects = [
       "Automates fixer-upper hunting for realtors. Pulls MLS and county data so my dad's agency can spot deals without combing listings by hand.",
     tags: ["Real Estate", "Automation", "Python"],
   },
+  {
+    name: "FX Signals",
+    blurb:
+      "Real-time forex dashboard. Streams live prices, runs momentum and trend indicators, and flags buy/sell signals as they fire. Built for my uncle's trading desk.",
+    tags: ["Finance", "Real-Time", "Python"],
+  },
 ];
 
 // Robotics & drone reel. IDs are YouTube video IDs (the 11-char string after "v=").
