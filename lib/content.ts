@@ -23,13 +23,13 @@ export const experiences = [
     status: "incoming" as "incoming" | "current" | "past",
   },
   {
-    company: "Sanford Burnham Prebys",
-    role: "Co-lead Developer · ecPATH",
+    company: "strvX",
+    role: "Founder",
     bullets: [
-      "ML pipeline that spots extrachromosomal DNA from histopathology images.",
-      "Currently pending Nature submission; shipping into hospitals next.",
+      "AI automation for businesses and government.",
+      "Services arm for custom builds, product arm for off-the-shelf systems.",
     ],
-    date: "2025 → Present",
+    date: "2026 → Present",
     status: "current" as "incoming" | "current" | "past",
   },
   {
@@ -43,14 +43,14 @@ export const experiences = [
     status: "current" as "incoming" | "current" | "past",
   },
   {
-    company: "strvX",
-    role: "Founder",
+    company: "Sanford Burnham Prebys",
+    role: "Co-lead Developer · ecPATH",
     bullets: [
-      "AI automation for businesses and government.",
-      "Services arm for custom builds, product arm for off-the-shelf systems.",
+      "ML pipeline that spots extrachromosomal DNA from histopathology images.",
+      "Currently pending Nature submission; shipping into hospitals next.",
     ],
-    date: "2024 → Present",
-    status: "current" as "incoming" | "current" | "past",
+    date: "2025 → Sep 2025",
+    status: "past" as "incoming" | "current" | "past",
   },
   {
     company: "Johns Hopkins · Information Security Institute",
