@@ -216,7 +216,7 @@ export const projects = [
     tags: ["Real Estate", "Automation", "Python"],
   },
   {
-    name: "FX Signals",
+    name: "Cipher",
     blurb:
       "Real-time forex dashboard. Streams live prices, runs momentum and trend indicators, and flags buy/sell signals as they fire. Built for my uncle's trading desk.",
     tags: ["Finance", "Real-Time", "Python"],
