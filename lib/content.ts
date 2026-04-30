@@ -209,6 +209,12 @@ export const projects = [
       "5 robots, TCP/IP, fail-over protocol. A patent rode on whether they could coordinate without a leader.",
     tags: ["Swarm Robotics", "Python", "ROS"],
   },
+  {
+    name: "FlipFinder-SD",
+    blurb:
+      "Automates fixer-upper hunting for realtors. Pulls MLS and county data so my dad's agency can spot deals without combing listings by hand.",
+    tags: ["Real Estate", "Automation", "Python"],
+  },
 ];
 
 // Robotics & drone reel. IDs are YouTube video IDs (the 11-char string after "v=").
