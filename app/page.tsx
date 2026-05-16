@@ -184,7 +184,7 @@ function Nav({ active }: { active: string }) {
             rel="noreferrer"
             className="group hidden h-9 items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 text-xs text-white backdrop-blur-xl transition hover:bg-white/[0.1] sm:inline-flex"
           >
-            Book 15 min
+            Book 30 min
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </a>
           <button
@@ -244,7 +244,7 @@ function Nav({ active }: { active: string }) {
                 onClick={() => setOpen(false)}
                 className="mt-1 rounded-xl bg-white px-4 py-3 text-center text-sm font-medium text-black"
               >
-                Book 15 minutes →
+                Book 30 minutes →
               </a>
             </div>
           </div>
@@ -327,7 +327,7 @@ function Hero() {
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-white/90"
           >
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-cyan-200/0 via-cyan-200/50 to-cyan-200/0 transition-transform duration-700 group-hover:translate-x-full" />
-            <span className="relative">Book 15 minutes</span>
+            <span className="relative">Book 30 minutes</span>
             <span className="relative transition-transform group-hover:translate-x-0.5">→</span>
           </a>
           <a

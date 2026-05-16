@@ -11,7 +11,7 @@ export const profile = {
   email: "alex.battikha@gmail.com",
   linkedin: "https://www.linkedin.com/in/alex-battikha/",
   github: "https://github.com/alex-battikha",
-  calendar: "https://cal.com/alex-battikha/15min",
+  calendar: "https://cal.com/alex-battikha/30min",
 };
 
 export const experiences = [
@@ -262,7 +262,7 @@ export const links = [
   { label: "Email", icon: "email", href: `mailto:${profile.email}`, value: profile.email },
   { label: "LinkedIn", icon: "linkedin", href: profile.linkedin, value: "/in/alex-battikha" },
   { label: "GitHub", icon: "github", href: profile.github, value: "@alex-battikha" },
-  { label: "Book 15 min", icon: "calendar", href: profile.calendar, value: "cal.com/alex-battikha" },
+  { label: "Book 30 min", icon: "calendar", href: profile.calendar, value: "cal.com/alex-battikha" },
 ];
 
 export const now = [

@@ -29,7 +29,7 @@ export function CommandPalette({
       { id: "how", label: "How I work", hint: "Operating system", group: "Navigate", run: () => scrollTo("how") },
       { id: "contact", label: "Contact", hint: "Let's talk", group: "Navigate", run: () => scrollTo("contact") },
       { id: "strvx", label: "Open strvX", hint: "strvx.com", group: "Open", run: () => openUrl("https://strvx.com") },
-      { id: "cal", label: "Book 15 minutes", hint: profile.calendar.replace("https://", ""), group: "Open", run: () => openUrl(profile.calendar) },
+      { id: "cal", label: "Book 30 minutes", hint: profile.calendar.replace("https://", ""), group: "Open", run: () => openUrl(profile.calendar) },
       { id: "github", label: "GitHub", hint: "@alex-battikha", group: "Open", run: () => openUrl(profile.github) },
       { id: "linkedin", label: "LinkedIn", hint: "/in/alex-battikha", group: "Open", run: () => openUrl(profile.linkedin) },
       { id: "copy-email", label: "Copy email", hint: profile.email, group: "Action", shortcut: "⌘E", run: onCopyEmail },
