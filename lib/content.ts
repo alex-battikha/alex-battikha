@@ -221,6 +221,22 @@ export const projects = [
       "Real-time forex dashboard. Streams live prices, runs momentum and trend indicators, and flags buy/sell signals as they fire. Built for my uncle's trading desk.",
     tags: ["Finance", "Real-Time", "Python"],
   },
+  {
+    name: "Handle",
+    blurb:
+      "AI-native property maintenance. A tenant calls a number, a voice agent triages the issue, then the system autonomously finds, calls, and negotiates with contractors. No human dispatcher needed.",
+    tags: ["Next.js", "TypeScript", "Gemini 2.5"],
+    href: "https://handle-yc.vercel.app/",
+    yc: true,
+  },
+  {
+    name: "Watchdog",
+    blurb:
+      "Real-time crime intelligence for SF dispatchers. Fuses live SFPD, Fire/EMS, 311, 511, and CalTrans CCTV feeds into one ranked queue with spatial-temporal correlation and incident clipping.",
+    tags: ["Next.js", "Supabase", "Drizzle"],
+    href: "https://watchdog-yc.vercel.app/",
+    yc: true,
+  },
 ];
 
 // Robotics & drone reel. IDs are YouTube video IDs (the 11-char string after "v=").

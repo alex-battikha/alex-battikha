@@ -533,6 +533,19 @@ function Experience() {
   );
 }
 
+function YCBadge() {
+  return (
+    <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-md border border-orange-500/40 bg-orange-500/[0.08] py-1 pl-1 pr-2">
+      <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] bg-orange-500 font-mono text-[10px] font-bold leading-none text-white">
+        Y
+      </span>
+      <span className="font-mono text-[9px] uppercase leading-tight tracking-[0.12em] text-orange-300">
+        Built at YC · GStack × GBrain Hackathon
+      </span>
+    </div>
+  );
+}
+
 function ExperienceDot({ status }: { status: "incoming" | "current" | "past" }) {
   const cls =
     status === "current"
@@ -631,25 +644,49 @@ function Projects() {
     <section className="mb-28">
       <SectionHeader kicker="04 · Shipped" title="Selected projects" />
       <div className="mt-10 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((p) => (
-          <SpotlightDiv
-            key={p.name}
-            className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-xl transition hover:border-white/25"
-          >
-            <h4 className="font-medium">{p.name}</h4>
-            <p className="mt-2 text-sm leading-relaxed text-white/65">{p.blurb}</p>
-            <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
-              {p.tags.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 font-mono text-[10px] text-white/60"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </SpotlightDiv>
-        ))}
+        {projects.map((p) => {
+          const cardCls =
+            "group flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-xl transition hover:border-white/25";
+          const inner = (
+            <>
+              {p.yc ? <YCBadge /> : null}
+              <div className="flex items-start justify-between gap-3">
+                <h4 className="font-medium">{p.name}</h4>
+                {p.href ? (
+                  <span className="text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:text-white">
+                    ↗
+                  </span>
+                ) : null}
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-white/65">{p.blurb}</p>
+              <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
+                {p.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 font-mono text-[10px] text-white/60"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </>
+          );
+          return p.href ? (
+            <SpotlightLink
+              key={p.name}
+              href={p.href}
+              target="_blank"
+              rel="noreferrer"
+              className={cardCls}
+            >
+              {inner}
+            </SpotlightLink>
+          ) : (
+            <SpotlightDiv key={p.name} className={cardCls}>
+              {inner}
+            </SpotlightDiv>
+          );
+        })}
       </div>
     </section>
   );
