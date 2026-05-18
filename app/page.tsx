@@ -533,14 +533,14 @@ function Experience() {
   );
 }
 
-function YCBadge() {
+function YCBadge({ hackathon }: { hackathon: string }) {
   return (
     <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-md border border-orange-500/40 bg-orange-500/[0.08] py-1 pl-1 pr-2">
       <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] bg-orange-500 font-mono text-[10px] font-bold leading-none text-white">
         Y
       </span>
       <span className="font-mono text-[9px] uppercase leading-tight tracking-[0.12em] text-orange-300">
-        Built at YC · GStack × GBrain Hackathon
+        Built at YC · {hackathon}
       </span>
     </div>
   );
@@ -649,7 +649,7 @@ function Projects() {
             "group flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-xl transition hover:border-white/25";
           const inner = (
             <>
-              {p.yc ? <YCBadge /> : null}
+              {p.hackathon ? <YCBadge hackathon={p.hackathon} /> : null}
               <div className="flex items-start justify-between gap-3">
                 <h4 className="font-medium">{p.name}</h4>
                 {p.href ? (

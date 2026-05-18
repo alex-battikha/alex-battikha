@@ -227,7 +227,7 @@ export const projects = [
       "AI-native property maintenance. A tenant calls a number, a voice agent triages the issue, then the system autonomously finds, calls, and negotiates with contractors. No human dispatcher needed.",
     tags: ["Next.js", "TypeScript", "Gemini 2.5"],
     href: "https://handle-yc.vercel.app/",
-    yc: true,
+    hackathon: "Call My Agent",
   },
   {
     name: "Watchdog",
@@ -235,7 +235,7 @@ export const projects = [
       "Real-time crime intelligence for SF dispatchers. Fuses live SFPD, Fire/EMS, 311, 511, and CalTrans CCTV feeds into one ranked queue with spatial-temporal correlation and incident clipping.",
     tags: ["Next.js", "Supabase", "Drizzle"],
     href: "https://watchdog-yc.vercel.app/",
-    yc: true,
+    hackathon: "GStack × GBrain Hackathon",
   },
 ];
 
