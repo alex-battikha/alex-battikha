@@ -94,6 +94,14 @@ export const ventures = [
     href: "https://strvx.com",
   },
   {
+    name: "strvX Robotics",
+    role: "Co-founder",
+    status: "Backed by Bow Capital & Founders Inc.",
+    blurb:
+      "Autonomy software for drone teams that keep operating when GPS, comms, and individual aircraft drop out. Built for defense and the field conditions that break everything else.",
+    href: "https://strvxrobotics.com",
+  },
+  {
     name: "ecPATH",
     role: "Co-lead dev · Sanford Burnham Prebys",
     status: "Pending Nature",
